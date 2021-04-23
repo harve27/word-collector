@@ -7,6 +7,7 @@ import {useSelector} from 'react-redux'
 function ColRight() {
 
     const finalDefArr = useSelector(state => state.definitionArray.value)
+    const isSpelled = useSelector(state => state.definitionArray.isSpelled)
     const whereWordInput = useSelector(state => state.extraInfo.whereWord)
     const description = useSelector(state => state.extraInfo.description)
 
@@ -17,7 +18,8 @@ function ColRight() {
     //Everywhere below that has fontSize = 60 or 80, is because of deploy UI changes
     return (
         <Col lg={4} sm={2} style={{padding: "16px"}}>
-            <div style={{padding: "10% 0", fontSize: "60%"}}> {/**Check this!! (the padding) */}
+            <div style={{padding: "5% 0", fontSize: "60%"}}> {/**Check this!! (the padding) */}
+                <h4 style = {{color: "green"}}>{isSpelled ? "" : "That word doesn't exist! Did you mean: "}</h4>
                 <ul className = "my-auto">
                     {listItems}
                 </ul>

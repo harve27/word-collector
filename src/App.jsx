@@ -70,6 +70,7 @@ Stable build 3 features the following goals. Note that these, albeit minor, will
 be enormously difficult to implement:
   - Form for submission should reset after submission (go blank) [DONE], it should also decapitalize [DONE]
   - Sort words/word-lists by timestamp
+  - Error handling for definitions
   - Improve mobile UI (which is a bit hacky)
 
  Resources that I used:

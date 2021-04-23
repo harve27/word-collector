@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Axios from "axios"
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setDefinitionArray } from './redux/defSlice'
+import { setDefinitionArray, setSpellStatus } from './redux/defSlice'
 import { setWhereWord, setDescription } from './redux/extraSlice'
 
 const WordListItem = ({ id, wordText, whereWord, description }) => {
@@ -23,7 +23,13 @@ const WordListItem = ({ id, wordText, whereWord, description }) => {
     const getWord = () => {
         Axios.get("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + wordText + "?key=" + API_KEY)
         .then((response) => {
-            dispatch(setDefinitionArray(response.data[0].shortdef))
+            if(typeof response.data[0] === "object") {
+              dispatch(setSpellStatus(true))
+              dispatch(setDefinitionArray(response.data[0].shortdef))
+            } else {
+              dispatch(setSpellStatus(false))
+              dispatch(setDefinitionArray(response.data))
+            }
         })
         dispatch(setWhereWord(whereWord))
         dispatch(setDescription(description))
