@@ -38,9 +38,9 @@ const ColMiddle = () => {
 
   //Word+ UseState
   const [word, setWord] = useState("");
-  const wordsRef = firestore.collection(`users/${auth.currentUser.uid}/wordList/${wordListId}/words`);
-
-  const [words] = useCollectionData(wordsRef, { idField: "id" });
+  const wordsRef = firestore.collection(`users/${auth.currentUser.uid}/wordList/${wordListId}/words`).orderBy("createdAt", "desc");
+  
+  const [words] = useCollectionData(wordsRef, { idField: "id" })
   const [wordLists] = useCollectionData(wordListRef, { idField: "id" })
 
   //REDUX whereWord and Description
@@ -50,7 +50,7 @@ const ColMiddle = () => {
   const onSubmitWord = (event) => {
     event.preventDefault();
 
-    wordsRef.add({
+    firestore.collection(`users/${auth.currentUser.uid}/wordList/${wordListId}/words`).add({
         wordText: word,
         whereWord: whereWordInput,
         description: description,
@@ -62,6 +62,7 @@ const ColMiddle = () => {
     dispatch(setDescription(""))
 
   };
+
 
   return (
     <Col lg={5} sm={7} style={colStyle}>
@@ -113,9 +114,9 @@ const ColMiddle = () => {
           {words && words.map((word) => 
             <WordListItem key={word.id} {...word} 
             />)}
-        </ListGroup> 
+        </ListGroup>  
     </Col>
-  );
-};
+  )
+}
 
 export default ColMiddle;

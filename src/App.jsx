@@ -66,11 +66,10 @@ The commit "...one more" marks the end of stable build 2, which features
 definitions, word lists, quasi-reponsive UI, and some more; nevertheless,
 it still remains unusable, at least for mobile. 
 
-Stable build 3 features the following goals. Note that these, albeit minor, will most likely
-be enormously difficult to implement:
+Stable build 3 features the following (minor) goals:
   - Form for submission should reset after submission (go blank) [DONE], it should also decapitalize [DONE]
   - Sort words/word-lists by timestamp
-  - Error handling for definitions
+  - Error handling for definitions [DONE]
   - Improve mobile UI (which is a bit hacky)
 
  Resources that I used:
