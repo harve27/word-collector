@@ -50,16 +50,16 @@ const ColMiddle = () => {
   const onSubmitWord = (event) => {
     event.preventDefault();
 
+    setWord("")
+    dispatch(setWhereWord(""))
+    dispatch(setDescription(""))
+
     firestore.collection(`users/${auth.currentUser.uid}/wordList/${wordListId}/words`).add({
         wordText: word,
         whereWord: whereWordInput,
         description: description,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()       
     })
-
-    setWord("")
-    dispatch(setWhereWord(""))
-    dispatch(setDescription(""))
 
   };
 
