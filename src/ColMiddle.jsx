@@ -50,9 +50,6 @@ const ColMiddle = () => {
   const onSubmitWord = (event) => {
     event.preventDefault();
 
-    dispatch(setWhereWord(""))
-    dispatch(setDescription(""))
-
     firestore.collection(`users/${auth.currentUser.uid}/wordList/${wordListId}/words`).add({
         wordText: word,
         whereWord: whereWordInput,
@@ -105,7 +102,8 @@ const ColMiddle = () => {
             </Col>
           </Form.Row>
 
-          <Button variant = "primary" type = "submit" style = {{display: "none"}}>
+          <Button variant = "primary" type = "submit" onClick = {() => {dispatch(setWhereWord("")) && dispatch(setDescription(""))}} 
+            style = {{display: "none"}}>
             Submit
           </Button>
 
