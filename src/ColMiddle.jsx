@@ -50,7 +50,6 @@ const ColMiddle = () => {
   const onSubmitWord = (event) => {
     event.preventDefault();
 
-    setWord("")
     dispatch(setWhereWord(""))
     dispatch(setDescription(""))
 
@@ -60,6 +59,8 @@ const ColMiddle = () => {
         description: description,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()       
     })
+
+    setWord("")
 
   };
 
