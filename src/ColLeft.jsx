@@ -4,10 +4,7 @@ import ListModal from './ListModal'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import DictLogo from "./logosvg_mw.png"
 
 import { auth } from "./firebase"
 
