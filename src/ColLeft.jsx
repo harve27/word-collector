@@ -28,8 +28,8 @@ function ColLeft() {
             </Row>
             <br></br>
             <Row>
-                <p><strong>How to use:</strong></p>
-                <p>
+                <p style = {{fontSize: "70%"}}><strong>How to use:</strong></p>
+                <p style = {{fontSize: "50%"}}>
                     Word Collector is a simple way to collect words that interest you. 
                     Simply enter a word and press "Enter", and we'll store it for you. If you want to add
                     extra info about your word, click the "Advanced" button and type your word there. You can also
