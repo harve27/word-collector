@@ -24,12 +24,10 @@ function ColRight() {
                     {listItems}
                 </ul>
                 <hr></hr>
-                {/** We want to make sure whereWordInput equals the actual whereWord in firebase, not 
-                 * that won't work because 
-                 */}
+                
                 <h5><strong>{whereWordInput !== "" ? "Where I found this word:" : ""}</strong></h5>
                 <p style = {{fontSize: "80%"}}>{whereWordInput}</p>
-                <h5><strong>{description !== "" ? "Description:" : ""}</strong></h5>
+                <h5><strong>{description !== "" ? "Context of Word:" : ""}</strong></h5>
                 <p style = {{fontSize: "80%"}}>{description}</p>
             </div>
 

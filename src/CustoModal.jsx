@@ -71,8 +71,8 @@ function CustoModal({subChildWord, subChildSetWord}) {
 
                         <Form.Group controlId="wordForm.ControlTextarea1" 
                         style = {{fontSize: "60%"}} onChange = {e => setDescriptionTemp(e.target.value)}>
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Label>Context of the Word</Form.Label>
+                            <Form.Control placeholder="What sentence it came from, how it makes you feel, etc." as="textarea" rows={3} />
                         </Form.Group> 
 
                         <Button variant="primary" type="submit" onClick = {subChildAdd}>
