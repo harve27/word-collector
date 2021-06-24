@@ -42,7 +42,6 @@ function ListModal() {
 
         <div style = {{width: "100%"}}>
 
-            {/** FontSize below should be 150%, but needs to be 80 to display correctly on deploy */}
             <Button variant="success" onClick = {handleShow} style = {{ width: "100%", fontSize: "80%"}}>
                 <i>Create A Word List</i>
             </Button> 

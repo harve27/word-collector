@@ -47,9 +47,6 @@ function DeleteModal() {
     }
 
     return (
-
-
-
         <div style = {{width: "100%"}}>
 
             {button}
@@ -73,9 +70,6 @@ function DeleteModal() {
             </Modal>
 
         </div>
-
-
-        
     );
 }
 

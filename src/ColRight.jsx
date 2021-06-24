@@ -15,10 +15,9 @@ function ColRight() {
         <li>{indivDef}</li>
     )
 
-    //Everywhere below that has fontSize = 60 or 80, is because of deploy UI changes
     return (
         <Col lg={4} sm={2} style={{padding: "16px"}}>
-            <div style={{padding: "5% 0", fontSize: "60%"}}> {/**Check this!! (the padding) */}
+            <div style={{padding: "5% 0", fontSize: "60%"}}> 
                 <h4 style = {{color: "green"}}>{isSpelled ? "" : "That word doesn't exist! Did you mean: "}</h4>
                 <ul className = "my-auto">
                     {listItems}

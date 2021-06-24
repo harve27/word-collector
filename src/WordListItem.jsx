@@ -35,7 +35,6 @@ const WordListItem = ({ id, wordText, whereWord, description }) => {
         dispatch(setDescription(description))
     }
 
-    // Style should not exist for listgroup item below, only done for deployment
     return (
     <ListGroup.Item action onClick = {getWord} style = {{fontSize: "60%"}}>
       {wordText}

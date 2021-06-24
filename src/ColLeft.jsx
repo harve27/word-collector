@@ -18,8 +18,6 @@ function ColLeft() {
             <h1 style={{fontSize: "calc(1px + 5vw)"}}><strong>Word Collector</strong></h1>
             <hr></hr>
 
-            {/** How to make these buttons dynamically change when resizing */}
-            {/** FontSize below should be 150%, but needs to be 80 to display correctly on deploy */}
             <Row>
                 <Button variant = "success" onClick={signOut} style = {{fontSize: "80%", width: "100%"}}><i>Sign Out</i></Button>
             </Row>

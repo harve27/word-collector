@@ -40,7 +40,6 @@ function CustoModal({subChildWord, subChildSetWord}) {
     return (
         <div>
 
-            {/** For deploy purposes: fontSize should be 95% and no marginBottom */}
             <Button variant="primary" onClick = {handleShow} style = {{fontSize: "50%", marginBottom: "13px"}}>
             Advanced
             </Button>
@@ -50,9 +49,6 @@ function CustoModal({subChildWord, subChildSetWord}) {
                 <Modal.Header closeButton>
                     <Modal.Title>Add a word!</Modal.Title>
                 </Modal.Header>
-
-
-                {/** All form groups on this section will have fontSize of 60%. This is only for deploy */}
 
                 <Modal.Body>
                     <Form>
