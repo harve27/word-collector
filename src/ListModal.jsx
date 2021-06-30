@@ -12,15 +12,16 @@ import { setWordListId, setWordListName } from './redux/listSlice'
 function ListModal() {
     const [show, setShow] = useState(false);
 
-    //internal temporary state
+    // Internal temporary state manages list name
     const [tempList, setTempList] = useState("")
     const wordListRef = firestore.collection(`users/${auth.currentUser.uid}/wordList`);
     const dispatch = useDispatch()
 
-
+    // For showing and hiding the modal
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    // Function that adds new word list to Firebase and changes REDUX
     const addWordList = (event) => {
         event.preventDefault();
     
@@ -28,13 +29,11 @@ function ListModal() {
           name: tempList,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()      
         })
+
+        // changes REDUX values to change which words are displayed on ColMiddle 
         .then((docRef) => {
           dispatch(setWordListId(docRef.id))
           dispatch(setWordListName(tempList))
-        })
-
-        wordListRef.doc("List").set({
-            name: "Main List"
         })
     };
 
@@ -71,8 +70,6 @@ function ListModal() {
             </Modal>
 
         </div>
-
-
         
     );
 }

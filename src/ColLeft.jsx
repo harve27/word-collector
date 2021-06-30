@@ -10,7 +10,7 @@ import { auth } from "./firebase"
 
 function ColLeft() {
 
-    //Auth
+    //Sign out function for sign out button
     const signOut = () => auth.signOut();
 
     return (

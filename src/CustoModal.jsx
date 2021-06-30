@@ -1,21 +1,21 @@
 import firebase, { auth, firestore } from "./firebase";
 import { useSelector } from 'react-redux'
-
+import { useState } from 'react'
 
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import {useState} from 'react'
 
-function CustoModal({subChildWord, subChildSetWord}) {
+function CustoModal() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const wordListId = useSelector(state => state.listId.value)
+    const [wordTemp, setWordTemp] = useState("")
     const [whereWordTemp, setWhereWordTemp] = useState("");
     const [descriptionTemp, setDescriptionTemp] = useState("");
     const wordsRef = firestore.collection(`users/${auth.currentUser.uid}/wordList/${wordListId}/words`);
@@ -24,16 +24,17 @@ function CustoModal({subChildWord, subChildSetWord}) {
         event.preventDefault();
     
         wordsRef.add({
-            wordText: subChildWord,
+            wordText: wordTemp,
             whereWord: whereWordTemp,
             description: descriptionTemp,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()       
         })
     
-        subChildSetWord("")
+        setWordTemp("")
         setWhereWordTemp("")
         setDescriptionTemp("")
-      };
+        setShow(false)
+      }
 
     
 
@@ -52,9 +53,8 @@ function CustoModal({subChildWord, subChildSetWord}) {
 
                 <Modal.Body>
                     <Form>
-
                         <Form.Group controlId = "wordForm.ControlText1"
-                            style = {{fontSize: "60%"}} onChange = {e => subChildSetWord(e.target.value)}>
+                            style = {{fontSize: "60%"}} onChange = {e => setWordTemp(e.target.value)}>
                             <Form.Label>Word</Form.Label>
                             <Form.Control type="text" />
                         </Form.Group>

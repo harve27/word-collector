@@ -10,7 +10,7 @@ import { setWhereWord, setDescription } from './redux/extraSlice'
 
 const WordListItem = ({ id, wordText, whereWord, description }) => {
 
-    //redux toolkit
+    // REDUX
     const dispatch = useDispatch()
     const listName = useSelector(state => state.listId.value)
 
@@ -31,6 +31,8 @@ const WordListItem = ({ id, wordText, whereWord, description }) => {
               dispatch(setDefinitionArray(response.data))
             }
         })
+
+        // Because this is run when WordListItem is pressed, it also makes it displayed in ColRight
         dispatch(setWhereWord(whereWord))
         dispatch(setDescription(description))
     }

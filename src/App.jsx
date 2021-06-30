@@ -12,10 +12,11 @@ import ColMiddle from './ColMiddle'
 import ColRight from './ColRight'
 import './App.css'
 
-
+// Function for signing into Google
 const sighInWithGoogle = () =>
   auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
+// Sign-in page upon entry
 const SignIn = () => (
     <Container>
       <Row>
@@ -25,14 +26,14 @@ const SignIn = () => (
         <Button style = {{visibility: "hidden"}}>Sign In With Google</Button>
       </Row>
       <Row>
-        <Button style = {{fontSize: "100%", padding: "20px"}}onClick={sighInWithGoogle} className = "mx-auto">Sign In With Google</Button>
+        <Button style = {{fontSize: "100%", padding: "20px"}} onClick={sighInWithGoogle} className = "mx-auto">Sign In With Google</Button>
       </Row>
     </Container>
 );
 
 const App = () => {
 
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth); //React-firebase hook to check if logged in
 
   return user ? 
     <Container fluid>

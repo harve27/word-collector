@@ -6,13 +6,15 @@ import {useSelector} from 'react-redux'
 
 function ColRight() {
 
+    // Grabs REDUX variables for display on ColRight
     const finalDefArr = useSelector(state => state.definitionArray.value)
     const isSpelled = useSelector(state => state.definitionArray.isSpelled)
     const whereWordInput = useSelector(state => state.extraInfo.whereWord)
     const description = useSelector(state => state.extraInfo.description)
 
-    const listItems = finalDefArr.map((indivDef) => 
-        <li>{indivDef}</li>
+    // Takes array of definitions from MW and and displays them in list
+    const listItems = finalDefArr.map((indivDef,index) => 
+        <li key={index}>{indivDef}</li>
     )
 
     return (
@@ -24,12 +26,12 @@ function ColRight() {
                 </ul>
                 <hr></hr>
                 
+                {/** Displays whereWord and desc conditionally dpending on if they exist */}
                 <h5><strong>{whereWordInput !== "" ? "Where I found this word:" : ""}</strong></h5>
                 <p style = {{fontSize: "80%"}}>{whereWordInput}</p>
                 <h5><strong>{description !== "" ? "Context of Word:" : ""}</strong></h5>
                 <p style = {{fontSize: "80%"}}>{description}</p>
             </div>
-
         </Col>
     )
 }

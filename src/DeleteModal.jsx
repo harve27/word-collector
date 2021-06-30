@@ -19,6 +19,7 @@ function DeleteModal() {
     const wordListRef = firestore.collection(`users/${auth.currentUser.uid}/wordList`);
     const dispatch = useDispatch()
 
+    // Deletes specified word list, then returns to main list
     const handleDelete = (id) => {
         wordListRef.doc(id).delete()
         dispatch(setWordListId("List"))
