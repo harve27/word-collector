@@ -20,7 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { setWordListId, setWordListName  } from './redux/listSlice'
 import { setWhereWord, setDescription } from './redux/extraSlice'
 
-const ColMiddle = () => {
+function ColMiddle() {
 
   // Defines a style for the column
   const colStyle = {
@@ -54,7 +54,6 @@ const ColMiddle = () => {
 
     subRef.get().then((doc) => {
       if (!doc.exists) {
-        console.log('YO!')
         subRef.set({
           name: "Main List"
         })
@@ -77,7 +76,7 @@ const ColMiddle = () => {
     })
 
     setWord("")
-  };
+  }
 
 
   return (
@@ -102,6 +101,7 @@ const ColMiddle = () => {
                 }>{wordList.name}</Dropdown.Item>
               )}
             </DropdownButton>
+            
           </Col>
 
         </Row>

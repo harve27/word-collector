@@ -31,7 +31,7 @@ const SignIn = () => (
     </Container>
 );
 
-const App = () => {
+function App() {
 
   const [user] = useAuthState(auth); //React-firebase hook to check if logged in
 

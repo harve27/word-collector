@@ -1,4 +1,4 @@
-import { auth, firestore } from "./firebase";
+import { auth, firestore } from "./firebase"
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 
@@ -8,20 +8,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setDefinitionArray, setSpellStatus } from './redux/defSlice'
 import { setWhereWord, setDescription } from './redux/extraSlice'
 
-const WordListItem = ({ id, wordText, whereWord, description }) => {
-
+function WordListItem(props) {
     // REDUX
     const dispatch = useDispatch()
     const listName = useSelector(state => state.listId.value)
 
-    const wordsRef = firestore.collection(`users/${auth.currentUser.uid}/wordList/${listName}/words`);
+    const wordsRef = firestore.collection(`users/${auth.currentUser.uid}/wordList/${listName}/words`)
   
-    const onDeleteWord = (id) => wordsRef.doc(id).delete();
+    const onDeleteWord = (id) => wordsRef.doc(id).delete()
 
     const API_KEY = process.env.REACT_APP_DEFAPI_KEY
 
     const getWord = () => {
-        Axios.get("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + wordText + "?key=" + API_KEY)
+        Axios.get("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + props.wordText + "?key=" + API_KEY)
         .then((response) => {
             if(typeof response.data[0] === "object") {
               dispatch(setSpellStatus(true))
@@ -33,18 +32,18 @@ const WordListItem = ({ id, wordText, whereWord, description }) => {
         })
 
         // Because this is run when WordListItem is pressed, it also makes it displayed in ColRight
-        dispatch(setWhereWord(whereWord))
-        dispatch(setDescription(description))
+        dispatch(setWhereWord(props.whereWord))
+        dispatch(setDescription(props.description))
     }
 
     return (
     <ListGroup.Item action onClick = {getWord} style = {{fontSize: "60%"}}>
-      {wordText}
+      {props.wordText}
         <span style={{float: "right"}}>
-          <Button variant = "danger" onClick={() => onDeleteWord(id)}><strong>delete</strong></Button>
+          <Button variant = "danger" onClick={() => onDeleteWord(props.id)}><strong>delete</strong></Button>
         </span>
     </ListGroup.Item>
-    );
-  };
+    )
+  }
 
 export default WordListItem
