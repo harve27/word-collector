@@ -18,18 +18,17 @@ function WordListItem(props) {
     const onDeleteWord = (id) => wordsRef.doc(id).delete()
 
     const API_KEY = process.env.REACT_APP_DEFAPI_KEY
+    const url = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + props.wordText + "?key=" + API_KEY
 
-    const getWord = () => {
-        Axios.get("https://www.dictionaryapi.com/api/v3/references/collegiate/json/" + props.wordText + "?key=" + API_KEY)
-        .then((response) => {
-            if(typeof response.data[0] === "object") {
-              dispatch(setSpellStatus(true))
-              dispatch(setDefinitionArray(response.data[0].shortdef))
-            } else {
-              dispatch(setSpellStatus(false))
-              dispatch(setDefinitionArray(response.data))
-            }
-        })
+    async function getWord() {
+        const response = await Axios.get(url)
+        if(typeof response.data[0] === "object") {
+          dispatch(setSpellStatus(true))
+          dispatch(setDefinitionArray(response.data[0].shortdef))
+        } else {
+          dispatch(setSpellStatus(false))
+          dispatch(setDefinitionArray(response.data))
+        }
 
         // Because this is run when WordListItem is pressed, it also makes it displayed in ColRight
         dispatch(setWhereWord(props.whereWord))

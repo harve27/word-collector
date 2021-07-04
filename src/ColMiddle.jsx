@@ -20,6 +20,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { setWordListId, setWordListName  } from './redux/listSlice'
 import { setWhereWord, setDescription } from './redux/extraSlice'
 
+import {isMobile} from 'react-device-detect';
+
 function ColMiddle() {
 
   // Defines a style for the column
@@ -61,6 +63,11 @@ function ColMiddle() {
     }).catch((error) => {
       console.log("Error getting document:", error);
     })
+
+    if(isMobile) {
+      alert("You're on mobile!!")
+    }
+
     // eslint-disable-next-line
   }, []) // Note: [] is used to simulate componentDidMount() in functional component
 

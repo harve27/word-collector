@@ -1,23 +1,22 @@
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./firebase";
-import firebase from "firebase";
+import { useAuthState } from "react-firebase-hooks/auth" 
+import { auth } from "./firebase" 
+import firebase from "firebase" 
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css' 
 
 import ColLeft from './ColLeft'
 import ColMiddle from './ColMiddle'
 import ColRight from './ColRight'
-import './App.css'
 
 // Function for signing into Google
 const sighInWithGoogle = () =>
-  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 
 // Sign-in page upon entry
-const SignIn = () => (
+function SignIn() {
     <Container>
       <Row>
         <h1 className = "mx-auto" style = {{fontSize: "200%", padding: "25px"}}><strong>Word Collector</strong></h1>
@@ -29,24 +28,23 @@ const SignIn = () => (
         <Button style = {{fontSize: "100%", padding: "20px"}} onClick={sighInWithGoogle} className = "mx-auto">Sign In With Google</Button>
       </Row>
     </Container>
-);
+} 
 
 function App() {
-
-  const [user] = useAuthState(auth); //React-firebase hook to check if logged in
+  const [user] = useAuthState(auth) //React-firebase hook to check if logged in
 
   return user ? 
-    <Container fluid>
-      <Row style={{height: "100vh"}}>
-        <ColLeft />
-        <ColMiddle /> 
-        <ColRight  />
-      </Row>
-    </Container>
+      <Container fluid>
+        <Row style={{height: "100vh"}}>
+          <ColLeft />
+          <ColMiddle /> 
+          <ColRight  />
+        </Row>
+      </Container>
       : 
     <SignIn />
 
-};
+} 
 
 export default App
 
