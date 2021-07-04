@@ -17,6 +17,7 @@ const sighInWithGoogle = () =>
 
 // Sign-in page upon entry
 function SignIn() {
+  return (
     <Container>
       <Row>
         <h1 className = "mx-auto" style = {{fontSize: "200%", padding: "25px"}}><strong>Word Collector</strong></h1>
@@ -28,6 +29,7 @@ function SignIn() {
         <Button style = {{fontSize: "100%", padding: "20px"}} onClick={sighInWithGoogle} className = "mx-auto">Sign In With Google</Button>
       </Row>
     </Container>
+  )
 } 
 
 function App() {
